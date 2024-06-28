@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Lucky Shrub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script>
+        function loadHTML(elementId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    setActiveLink();
+                });
+        }
+        function setActiveLink() {
+            const links = document.querySelectorAll('nav a');
+            const currentURL = window.location.href;
+            links.forEach(link => {
+                if (link.href === currentURL) {
+                    link.classList.add('active');
+                }
+                link.addEventListener('click', function() {
+                    links.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+        window.onload = function() {
+            loadHTML('header', 'header.html', setActiveLink);
+            loadHTML('footer', 'footer.html');
+        };
+    </script>
+    <style>
+        h3 {
+            text-decoration: underline; 
+            text-decoration-color:#3b3b3b; 
+            text-decoration-thickness: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div> 
+    <main>
+        <div class="headlineSection" style="background-image: url('pexels-leeloothefirst-4630027.jpg');">
+            <h1 style="text-shadow:1px 1px 3px white">Design your own oasis</h1>
+            <h2 style="text-shadow:1px 1px 3px white">Elevate your home into a green haven</h2>
+        </div>
+        <div class="section" style="padding-top: 5vh">
+            <article>
+                <img src="pexels-joshua-mcknight-442355-3854754.jpg">
+                <div class="text-container">
+                    <h3>Trending</h3>
+                    <p>Explore our trending plants</p>
+                </div>
+            </article>
+            <article>
+                <img src="pexels-matzi-48865079-8260060.jpg">
+                <div class="text-container">
+                    <h3>New</h3>
+                    <p>Check out what's new in season</p>
+                </div>
+            </article>
+            <article>
+                <img src="pexels-james-lee-932763-2016999.jpg">
+                <div class="text-container">
+                    <h3>Explore</h3>
+                    <p>Discover where our plants come from</p>
+                </div>
+            </article>
+        </div>
+    </main>
+    <div id="footer"></div>
+</body>

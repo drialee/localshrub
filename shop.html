@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function loadHTML(elementId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+        window.onload = function() {
+            loadHTML('header', 'header.html');
+            loadHTML('footer', 'footer.html');
+        };
+    </script>
+    <style>
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+        .img-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            opacity: 0;
+            z-index: 1;
+        }
+        .overlay .label {
+            display: flex;
+            height: 100%;
+            justify-content: flex-end;
+            margin-left: 1vw; 
+            margin-bottom: 2vh;
+            align-items: start;
+            flex-direction: column;
+            gap: 1;
+        }
+        .label h3 {
+            color: white;
+            margin: 0;
+            margin-bottom: 2vh; 
+        }
+        .img-container:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="section">
+            <div class="img-container">
+                <img src="pexels-cheresha-489109-1424672.jpg">
+                <div class="overlay">
+                    <div class="label">
+                        <h3>Potted mini cactus</h3>
+                        <h3>$13.00</h3>
+                    </div>
+                </div>
+            </div>
+            <div class = "img-container">
+                <img src="pexels-kate-amos-1408770-2718447.jpg">
+                <div class="overlay">
+                    <div class="label">
+                        <h3>Corn plant</h3>
+                        <h3>$25.00</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="img-container">
+                <img src="pexels-myfoodie-2568458.jpg">
+                <div class="overlay">
+                    <div class="label">
+                        <h3>Prickly apple with stone pot</h3>
+                        <h3>$10.00</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="img-container">
+                <img src="pexels-pixabay-219779.jpg">
+                <div class="overlay">
+                    <div class="label">
+                        <h3>Three armed mini cactus</h3>
+                        <h3>$12.00</h3>
+                    </div>
+                </div>
+            </div>
+            <div class = "img-container">
+                <img src="pexels-thai-nguyen-334028-945891.jpg">
+                <div class="overlay">
+                    <div class="label">
+                        <h3>Flower succulent</h3>
+                        <h3>$14.00</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="img-container">
+                <img src="pexels-designecologist-1239387.jpg">
+                <div class="overlay">
+                    <div class="label">
+                        <h3>Poloroid cactus</h3>
+                        <h3>$60.00</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main> 
+    <div id="footer"></div> 
+</body>

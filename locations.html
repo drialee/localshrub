@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Lucky Shrub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <script>
+        function loadHTML(elementId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                    setActiveLink();
+                });
+        }
+        function setActiveLink() {
+            const links = document.querySelectorAll('nav a');
+            const currentURL = window.location.href;
+            links.forEach(link => {
+                if (link.href === currentURL) {
+                    link.classList.add('active');
+                }
+                link.addEventListener('click', function() {
+                    links.forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        }
+        window.onload = function() {
+            loadHTML('header', 'header.html', setActiveLink);
+            loadHTML('footer', 'footer.html');
+        };
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <main>
+        <div class="section">
+            <div style="margin-left: 10vw; width: 40%; height: auto">
+                <img src="pexels-amina-filkins-5414325.jpg" style="width:100%; height: auto">
+            </div>
+            <div class="article" style="margin-left: 5vw; margin-top: 12vh">
+                <h2>visit us</h2>
+                <p style="text-decoration: underline">2150 N Alvernon Way</p>
+                <p>Tucson, AZ</p>
+            </div>
+        </div>
+    </main>
+    <div id="footer"></div>
+</body>
